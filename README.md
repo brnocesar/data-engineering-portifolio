@@ -1,5 +1,10 @@
 # data-engineering-portifolio
 
+- [Data Pipeline with Apache Beam](https://github.com/brnocesar/learning-data-analysis/tree/main/apache_beam)
+- [ELT Data Pipeline with Apache Airflow and Apache Spark](https://github.com/brnocesar/airflow-spark)
+- [Analysis of Registration Data with Apache Spark](https://github.com/brnocesar/learning-data-analysis/tree/main/apache_spark)
+- [File and Stream Handling in PHP](https://github.com/brnocesar/learning-PHP/tree/main/11-input-output-streans)
+
 ## Data Pipeline with Apache Beam
 
 **Key-words:** Apache Beam, Python, Pandas, regex, Batch processing, ETL.
