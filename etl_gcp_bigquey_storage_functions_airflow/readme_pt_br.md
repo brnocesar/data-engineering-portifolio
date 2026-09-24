@@ -1,4 +1,4 @@
-# ETL de bases para GCP
+# ETL para GCP
 
 Processo de **ETL** genérico para **integração de dados de diversas fontes**, capaz de carregar múltiplas bases de dados para o **BigQuery** usando o mesmo conjunto de códigos, gerando o SQL de cada carga de forma dinâmica a partir de mapeamentos por base.
 

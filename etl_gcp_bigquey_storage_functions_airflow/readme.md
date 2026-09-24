@@ -1,4 +1,4 @@
-# ETL of bases to GCP
+# ETL to GCP
 
 Generic **ETL** process for **integration of data from multiple sources**, capable of loading multiple databases into **BigQuery** using the same set of code, dynamically generating the SQL for each load based on per-base mappings.
 
