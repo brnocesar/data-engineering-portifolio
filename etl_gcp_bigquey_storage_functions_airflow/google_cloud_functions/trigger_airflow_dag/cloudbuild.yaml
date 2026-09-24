@@ -1,0 +1,5 @@
+steps:
+- name: 'gcr.io/cloud-builders/gcloud'
+  args: ['functions', 'deploy', 'trigger_airflow_dag', '--entry-point=entry_point', '--runtime=python312', '--project=gcp-project-id', '--trigger-http', '--region=region-id', '--source=google_cloud_functions/trigger_airflow_dag']
+options:
+  logging: CLOUD_LOGGING_ONLY

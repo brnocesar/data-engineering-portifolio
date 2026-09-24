@@ -1,0 +1,27 @@
+steps:
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:latest'
+    entrypoint: 'bash'
+    args: ['-c', 'git clone -b main --single-branch https://source.developers.google.com/p/gcp-project-id/r/google_cloud_functions']
+
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:latest'
+    entrypoint: 'bash'
+    args: ['-c', 'cd google_cloud_functions/gcf_2_scd_versioning && ls']
+
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:latest'
+    entrypoint: 'gcloud'
+    args: ['functions', 'deploy', 'gcf_2_scd_versioning',
+           '--entry-point=insert_new_records',
+           '--runtime=python311',
+           '--project=gcp-project-id',
+           '--trigger-http',
+           '--region=region-id',
+           '--source=google_cloud_functions/gcf_2_scd_versioning',
+           '--cpu=2',
+           '--memory=2GB',
+           '--max-instances=3000',
+           '--min-instances=0',
+           '--timeout=540s',
+           '--service-account=conta-servico@gcp-project-id.iam.gserviceaccount.com']
+options:
+  logging: CLOUD_LOGGING_ONLY
+serviceAccount: 'projects/gcp-project-id/serviceAccounts/conta-servico@gcp-project-id.iam.gserviceaccount.com'

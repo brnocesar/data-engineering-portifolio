@@ -1,9 +1,24 @@
 # data-engineering-portifolio
 
+- [ETL of Bases to BigQuery with Cloud Storage, Cloud Functions and Airflow](etl_gcp_bigquey_storage_functions_airflow/readme.md)
 - [Data Pipeline with Apache Beam](https://github.com/brnocesar/learning-data-analysis/tree/main/apache_beam)
 - [ELT Data Pipeline with Apache Airflow and Apache Spark](https://github.com/brnocesar/airflow-spark)
 - [Analysis of Registration Data with Apache Spark](https://github.com/brnocesar/learning-data-analysis/tree/main/apache_spark)
 - [File and Stream Handling in PHP](https://github.com/brnocesar/learning-PHP/tree/main/11-input-output-streans)
+
+## ETL of Bases to BigQuery with Cloud Storage, Cloud Functions and Airflow
+
+**Key-words:** Google Cloud Platform, Cloud Functions, BigQuery, Cloud Storage, Cloud Composer, Apache Airflow, Python, ETL, SCD (Slowly Changing Dimension), Batch processing.
+
+A generic ETL process for integration of data from multiple sources, capable of loading multiple databases into BigQuery using the same set of code, dynamically generating the SQL for each load based on per-base mappings.
+
+- Extraction/Upload: a local Python script uploads files from a local data repository to Cloud Storage buckets, and is able to automatically map new bases by creating the corresponding external, RAW and versioned tables in BigQuery.
+- RAW data insert into BigQuery: external tables exposes the files in Cloud Storage as queryable data, while the a Cloud Function inserts that content into RAW tables, preserving the full load history.
+- Versioning (SCD): another Cloud Function applies a SCD (Slowly Changing Dimension) Type 2 process, using timestamp and fingerprint comparisons to detect and track record changes over time via `MERGE`.
+- Dynamic mappings: none of the Cloud Functions has hardcoded knowledge of the bases it processes; all SQL is built from mappings manual or automatically generated for each base, with CI/CD deploy for both functions via Cloud Build.
+- Orchestration: Apache Airflow (Cloud Composer) DAGs, organized by update frequency (daily, hourly, instant), dynamically build the task chain (insert into RAW → data quality → versioning) for each base in the load process. DAGs can run by schedule or on-demand triggering via a dedicated Cloud Function.
+
+[Click here to access the project](etl_gcp_bigquey_storage_functions_airflow/readme.md)
 
 ## Data Pipeline with Apache Beam
 
